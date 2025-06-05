@@ -5,10 +5,12 @@ import br.com.lukasprojetos.med.ru.api.medico.DadosCadastroMedico;
 import br.com.lukasprojetos.med.ru.api.medico.DadosListagemMedico;
 import br.com.lukasprojetos.med.ru.api.medico.Medico;
 import br.com.lukasprojetos.med.ru.api.medico.MedicoReposritory;
+import br.com.lukasprojetos.med.ru.api.medicos.DadosAtualizarMecisos;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,8 +31,16 @@ public class MedicoControler {
 
     }
     @GetMapping
-    public Page<DadosListagemMedico> listar(Pageable paginacao) {
+    public Page<DadosListagemMedico> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
        return reposritory.findAll(paginacao).map(DadosListagemMedico::new);
+    }
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody @Valid DadosAtualizarMecisos dados ){
+        var medico  = reposritory.getReferenceById(dados.id());
+        medico.atualizarInformacoes(dados);
+
+
     }
 
 }

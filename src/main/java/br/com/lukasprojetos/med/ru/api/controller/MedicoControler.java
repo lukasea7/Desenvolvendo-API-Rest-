@@ -7,6 +7,8 @@ import br.com.lukasprojetos.med.ru.api.medico.Medico;
 import br.com.lukasprojetos.med.ru.api.medico.MedicoReposritory;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,9 +29,8 @@ public class MedicoControler {
 
     }
     @GetMapping
-    public List<DadosListagemMedico> listar(){
-        return reposritory.findAll().stream().map(DadosListagemMedico::new).toList();
-
+    public Page<DadosListagemMedico> listar(Pageable paginacao) {
+       return reposritory.findAll(paginacao).map(DadosListagemMedico::new);
     }
 
 }

@@ -1,4 +1,4 @@
-package br.com.lukasprojetos.med.ru.api.endereco;
+package br.com.lukasprojetos.med.ru.api.domain.endereco;
 
 
 import jakarta.persistence.Embeddable;
@@ -21,6 +21,9 @@ public class Endereco {
 
     public Endereco(){
 
+    }
+
+    public Endereco(Endereco endereco) {
     }
 
     public String getLogradouro() {

@@ -1,4 +1,4 @@
-package br.com.lukasprojetos.med.ru.api.medico;
+package br.com.lukasprojetos.med.ru.api.domain.medico;
 
 public record DadosListagemMedico( long id,String nome, String email, String crm, Especialidade especialidade) {
 

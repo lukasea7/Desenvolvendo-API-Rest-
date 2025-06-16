@@ -1,8 +1,9 @@
 package br.com.lukasprojetos.med.ru.api.controller;
 
 
-import br.com.lukasprojetos.med.ru.api.medico.*;
-import br.com.lukasprojetos.med.ru.api.medicos.DadosAtualizarMecisos;
+import br.com.lukasprojetos.med.ru.api.domain.medico.*;
+import br.com.lukasprojetos.med.ru.api.domain.medico.*;
+import br.com.lukasprojetos.med.ru.api.domain.medicos.DadosAtualizarMecisos;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -31,24 +32,27 @@ public class MedicoControler {
         return ResponseEntity.created(uri).body(new DadosDetalhamentoMedico(medico));
 
     }
+
     @GetMapping
-    public ResponseEntity <Page<DadosListagemMedico>>listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
-       var page = reposritory.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
-       return ResponseEntity.ok(page);
+    public ResponseEntity<Page<DadosListagemMedico>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
+        var page = reposritory.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
+        return ResponseEntity.ok(page);
 
     }
+
     @PutMapping
     @Transactional
-    public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizarMecisos dados ){
-        var medico  = reposritory.getReferenceById(dados.id());
+    public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizarMecisos dados) {
+        var medico = reposritory.getReferenceById(dados.id());
         medico.atualizarInformacoes(dados);
         return ResponseEntity.ok(new DadosDetalhamentoMedico(medico));
 
 
     }
+
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity excluir(@PathVariable Long id){
+    public ResponseEntity excluir(@PathVariable Long id) {
         var medico = reposritory.getReferenceById(id);
         medico.excluir();
 
@@ -56,4 +60,15 @@ public class MedicoControler {
 
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity detalhar(@PathVariable Long id) {
+        var medico = reposritory.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoMedico(medico));
+
+    }
+
 }
+
+
+
+

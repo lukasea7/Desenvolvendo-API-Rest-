@@ -1,6 +1,6 @@
-package br.com.lukasprojetos.med.ru.api.medico;
+package br.com.lukasprojetos.med.ru.api.domain.medico;
 
-import br.com.lukasprojetos.med.ru.api.endereco.Endereco;
+import br.com.lukasprojetos.med.ru.api.domain.endereco.Endereco;
 
 public record DadosDetalhamentoMedico(Long id, String nome,
                                       String email, String crm,String telefone,

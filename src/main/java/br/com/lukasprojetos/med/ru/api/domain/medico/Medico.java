@@ -1,12 +1,11 @@
-package br.com.lukasprojetos.med.ru.api.medico;
+package br.com.lukasprojetos.med.ru.api.domain.medico;
 
-import br.com.lukasprojetos.med.ru.api.endereco.Endereco;
-import br.com.lukasprojetos.med.ru.api.medicos.DadosAtualizarMecisos;
+import br.com.lukasprojetos.med.ru.api.domain.endereco.Endereco;
+import br.com.lukasprojetos.med.ru.api.domain.medicos.DadosAtualizarMecisos;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Table(name = "medicos")
 @Entity(name = "Medico")

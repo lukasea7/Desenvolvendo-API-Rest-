@@ -1,6 +1,6 @@
-package br.com.lukasprojetos.med.ru.api.medico;
+package br.com.lukasprojetos.med.ru.api.domain.medico;
 
-import br.com.lukasprojetos.med.ru.api.endereco.DadosEndereco;
+import br.com.lukasprojetos.med.ru.api.domain.endereco.DadosEndereco;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

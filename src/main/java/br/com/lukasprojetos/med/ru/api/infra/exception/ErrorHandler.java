@@ -1,4 +1,4 @@
-package br.com.lukasprojetos.med.ru.api.infra.security;
+package br.com.lukasprojetos.med.ru.api.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;

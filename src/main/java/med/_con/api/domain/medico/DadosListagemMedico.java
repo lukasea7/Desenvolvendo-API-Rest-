@@ -1,9 +1,4 @@
-package med._con.api.medico;
-
-import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+package med._con.api.domain.medico;
 
 public record DadosListagemMedico(
         Long id,

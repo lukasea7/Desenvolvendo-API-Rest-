@@ -2,6 +2,8 @@ package med._con.api.controller;
 
 import jakarta.validation.Valid;
 import med._con.api.domain.usuario.DadosAutenticacao;
+import med._con.api.domain.usuario.Usuario;
+import med._con.api.infra.security.TokenService;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,13 +22,16 @@ public class AutenticacaoController {
     @Autowired
     private AuthenticationManager manager;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping
     public ResponseEntity efetuarLoging(@RequestBody @Valid DadosAutenticacao dados){
 
       var token = new UsernamePasswordAuthenticationToken(dados.login(),dados.senha());
       var  authentication =  manager.authenticate(token);
 
-      return ResponseEntity.ok().build();
+      return ResponseEntity.ok(tokenService.gerarToken((Usuario) authentication.getPrincipal()));
 
     }
 }

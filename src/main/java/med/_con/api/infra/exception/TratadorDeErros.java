@@ -1,7 +1,6 @@
-package med._con.api.infra;
+package med._con.api.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
-import lombok.experimental.StandardException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
